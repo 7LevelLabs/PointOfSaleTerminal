@@ -1,0 +1,42 @@
+POSTerminalAPI
+The problem is formulated in the file TheTask
+
+v 0.2
+13.09.2013
+
+RESULTING API:
+
+POSTerminalAPI.setPricing (Character productCode, int productQuantity, float productPackPrice)
+POSTerminalAPI.scan (String order)
+POSTerminalAPI.calculateTotal()
+
+POSTerminalAPI.isReadyForGetTotal ()
+POSTerminalAPI.getLastErrors ()
+
+__ RUN:
+1. Main test, implementing the requirements for the task:
+POSTerminalAPITest
+
+2. Other tests:
+ProductTest
+POSTerminalTest
+
+__ Assumptions:
+1. The process of using an artifact (implements this API) :
+- input prices for necessary products (any times - setPricing),
+- input calculating orders (any times - scan),
+- while (isReadyForGetTotal==false) {
+      - getting last errors list (one time - getLastErrors)
+      - fixing errors (registering products or adding 1-pack-prices - any times - setPricing)
+}
+- get order total (one time - calculateTotal).
+After last operation all orders will be lost.
+
+2. Product code (key field) - one character (char).
+
+__ The requirement to use the artifact (with this API) (as is in the requirements):
+1. We have to input 1-item-pack price, for example :
+setPricing ('A', 1, 10f)
+
+__ Perspectives:
+1. For a minimal application in reality - need to change the product code to String (and do some changes in the code, yes).
