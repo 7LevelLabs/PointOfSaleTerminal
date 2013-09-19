@@ -90,7 +90,12 @@ public class POSTerminal implements POSTerminalAPI {
 		if (order.length() == 0) {
 			throw new IllegalArgumentException("Arguments can't be empty.");
 		}
-		this.order = this.order + order;
+
+		StringBuffer output = new StringBuffer();
+
+		output.append(this.order);
+		output.append(order);
+		this.order = output.toString();
 	}
 
 	@Override
